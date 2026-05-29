@@ -6,10 +6,14 @@ import {
 } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import heroImg from "@/assets/hero-tow.jpg";
-import s1 from "@/assets/service-1.jpg";
-import s2 from "@/assets/service-2.jpg";
-import s3 from "@/assets/service-3.jpg";
+import heroImg from "@/assets/hero-tow.png";
+import s1 from "@/assets/service-1.png";
+import s2 from "@/assets/service-2.png";
+import s3 from "@/assets/service-3.png";
+import g1 from "@/assets/gallery-1.png";
+import g2 from "@/assets/gallery-2.png";
+import g3 from "@/assets/gallery-3.png";
+import g4 from "@/assets/gallery-4.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
