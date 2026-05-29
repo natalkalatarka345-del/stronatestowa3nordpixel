@@ -68,12 +68,42 @@ function Index() {
         <Stats />
         <Services />
         <About />
+        <Gallery />
         <Pricing />
         <Faq />
         <Contact />
       </main>
       <SiteFooter />
     </div>
+  );
+}
+
+function Gallery() {
+  const items = [
+    { src: g1, alt: "Holowanie auta dostawczego" },
+    { src: g2, alt: "Transport powypadkowego SUV-a" },
+    { src: g3, alt: "Holowanie pojazdu nocą" },
+    { src: g4, alt: "Pomoc ciężarowa Scania w nocy" },
+  ];
+  return (
+    <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div className="max-w-2xl mb-12">
+        <div className="text-xs uppercase tracking-[0.2em] text-primary mb-3">Realizacje</div>
+        <h2 className="text-3xl lg:text-5xl font-bold mb-4">Z naszej <span className="text-gradient">codziennej trasy</span></h2>
+        <p className="text-muted-foreground">Kilka migawek z interwencji — dzień i noc, miasto i autostrada, lekkie i ciężkie.</p>
+      </div>
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
+        {items.map((it, i) => (
+          <div key={i} className={`group relative rounded-2xl overflow-hidden border border-border bg-card ${i === 0 ? "lg:col-span-2 lg:row-span-2 aspect-square lg:aspect-auto" : "aspect-square"}`}>
+            <img src={it.src} alt={it.alt} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute bottom-3 left-3 right-3 text-xs font-medium text-foreground translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all">
+              {it.alt}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 
