@@ -215,7 +215,7 @@ function Stats() {
     <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
         {stats.map((s, i) => (
-          <div key={i} className="group relative rounded-2xl border border-border bg-card p-6 lg:p-8 overflow-hidden hover:border-primary/50 transition-colors">
+          <div key={i} style={{ transitionDelay: `${i * 80}ms` }} className="reveal group relative rounded-2xl border border-border bg-card p-6 lg:p-8 overflow-hidden hover:border-primary/50 transition-colors">
             <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-5 transition-opacity" />
             <div className="font-display text-4xl lg:text-5xl font-bold text-gradient">
               {s.value}<span className="text-muted-foreground text-2xl">{s.suffix}</span>
