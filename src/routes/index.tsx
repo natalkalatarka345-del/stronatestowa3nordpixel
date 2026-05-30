@@ -241,7 +241,7 @@ function Services() {
         {services.map((s, i) => {
           const Icon = s.icon;
           return (
-            <div key={i} className="group relative rounded-2xl border border-border bg-card overflow-hidden hover:border-primary/50 transition-all hover:-translate-y-1 hover:shadow-amber duration-300">
+            <div key={i} style={{ transitionDelay: `${i * 70}ms` }} className="reveal group relative rounded-2xl border border-border bg-card overflow-hidden hover:border-primary/50 transition-all hover:-translate-y-1 hover:shadow-amber duration-300">
               {s.img && (
                 <div className="aspect-[16/10] overflow-hidden">
                   <img src={s.img} alt={s.title} loading="lazy" width={800} height={500} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
