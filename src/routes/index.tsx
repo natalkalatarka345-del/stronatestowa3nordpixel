@@ -6,6 +6,8 @@ import {
 } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { MobileCallBar } from "@/components/site/MobileCallBar";
+import { useReveal } from "@/hooks/use-reveal";
 import heroImg from "@/assets/hero-tow.png";
 import s1 from "@/assets/service-1.png";
 import s2 from "@/assets/service-2.png";
@@ -59,8 +61,9 @@ const faqs = [
 ];
 
 function Index() {
+  useReveal();
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col relative">
       <SiteHeader />
       <main className="flex-1">
         <Hero />
@@ -74,6 +77,7 @@ function Index() {
         <Contact />
       </main>
       <SiteFooter />
+      <MobileCallBar />
     </div>
   );
 }
@@ -110,17 +114,23 @@ function Gallery() {
 function Hero() {
   return (
     <section className="relative overflow-hidden">
+      <div className="absolute -top-32 -left-32 w-[480px] h-[480px] aurora-blob animate-aurora pointer-events-none" />
+      <div className="absolute top-20 -right-32 w-[420px] h-[420px] aurora-blob animate-aurora [animation-delay:-7s] pointer-events-none" />
       <div className="absolute inset-0 grid-bg opacity-40" />
+      <div className="absolute inset-0 noise opacity-[0.06] pointer-events-none mix-blend-overlay" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-24 lg:pt-24 lg:pb-32 grid lg:grid-cols-2 gap-12 items-center relative">
         <div className="animate-fade-up">
           <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-primary mb-6">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary animate-strobe" />
+            <span className="relative inline-flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-primary animate-radar" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
+            </span>
             Dyspozytornia online — odpowiadamy w 30 sekund
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.05] mb-6">
             Pomoc drogowa <br />
-            <span className="text-gradient">w 20 minut.</span><br />
+            <span className="shine-text">w 20 minut.</span><br />
             Przez 24 godziny.
           </h1>
           <p className="text-lg text-muted-foreground max-w-xl mb-8">
@@ -128,8 +138,8 @@ function Hero() {
             i Europie. Bez ukrytych opłat. Bez czekania. Każdego dnia w roku.
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
-            <a href="tel:+48000000000" className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-primary px-6 py-4 text-base font-semibold text-primary-foreground shadow-amber hover:scale-[1.03] transition-transform animate-pulse-glow">
-              <Phone className="h-5 w-5" />
+            <a href="tel:+48000000000" className="group relative inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-primary px-6 py-4 text-base font-semibold text-primary-foreground shadow-amber hover:scale-[1.03] transition-transform animate-pulse-glow overflow-hidden">
+              <Phone className="h-5 w-5 group-hover:rotate-12 transition-transform" />
               Zadzwoń: +48 000 000 000
             </a>
             <a href="#uslugi" className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-card/60 backdrop-blur px-6 py-4 text-base font-semibold hover:bg-secondary transition-colors">
@@ -144,17 +154,35 @@ function Hero() {
         </div>
 
         <div className="relative animate-fade-up [animation-delay:200ms]">
-          <div className="absolute -inset-4 bg-gradient-primary opacity-20 blur-3xl rounded-full" />
+          <div className="absolute -inset-6 bg-gradient-primary opacity-25 blur-3xl rounded-full animate-float" />
           <div className="relative rounded-2xl overflow-hidden border border-border shadow-card">
             <img src={heroImg} alt="Żółta laweta AmberTow z włączonymi światłami ostrzegawczymi" width={1600} height={1000} className="w-full h-auto object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
             <div className="absolute top-4 left-4 right-4 flex justify-between">
-              <div className="rounded-lg bg-background/80 backdrop-blur px-3 py-2 text-xs">
+              <div className="rounded-lg bg-background/80 backdrop-blur px-3 py-2 text-xs border border-border/60">
                 <div className="text-muted-foreground">Status floty</div>
-                <div className="font-semibold flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-green-400 animate-strobe" /> 8 lawet w trasie</div>
+                <div className="font-semibold flex items-center gap-1.5">
+                  <span className="relative inline-flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-green-400/70 animate-radar" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
+                  </span>
+                  8 lawet w trasie
+                </div>
               </div>
-              <div className="rounded-lg bg-background/80 backdrop-blur px-3 py-2 text-xs">
+              <div className="rounded-lg bg-background/80 backdrop-blur px-3 py-2 text-xs border border-border/60">
                 <div className="text-muted-foreground">Najbliższa</div>
                 <div className="font-semibold">~ 3.2 km</div>
+              </div>
+            </div>
+            <div className="absolute bottom-4 left-4 right-4 flex items-center gap-3 rounded-xl bg-background/80 backdrop-blur border border-border/60 px-4 py-3">
+              <div className="flex -space-x-2">
+                {["A","M","K","P"].map((c,i)=>(
+                  <span key={i} className="h-7 w-7 rounded-full bg-gradient-primary text-[11px] font-bold text-primary-foreground flex items-center justify-center border-2 border-background">{c}</span>
+                ))}
+              </div>
+              <div className="text-xs">
+                <div className="font-semibold">+1247 kierowców obsłużonych</div>
+                <div className="text-muted-foreground">w tym miesiącu</div>
               </div>
             </div>
           </div>
