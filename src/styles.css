@@ -159,11 +159,12 @@
     filter: blur(60px);
   }
   .shine-text {
-    background: linear-gradient(90deg, transparent 0%, oklch(1 0 0 / 0.85) 20%, transparent 40%),
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.85) 20%, transparent 40%),
                 var(--gradient-primary);
     background-size: 200% 100%, 100% 100%;
     -webkit-background-clip: text;
     background-clip: text;
+    -webkit-text-fill-color: transparent;
     color: transparent;
     animation: shine 4s linear infinite;
   }
